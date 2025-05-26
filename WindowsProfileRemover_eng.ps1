@@ -152,7 +152,8 @@ function Main(){
     }
 
     # Confirm
-    $answer = Read-Host 'Are you sure you want to PERMANENTLY DELETE these Active Directory profiles? (y/N)'
+    Write-Host 'Are you sure you want to PERMANENTLY DELETE these Active Directory profiles? (y/N)'
+    $answer = Read-Host
 
     # Accept all of s/S/y/Y
     if ($answer -eq "s" -or $answer -eq "S" -or $answer -eq "y" -or $answer -eq "Y") {
