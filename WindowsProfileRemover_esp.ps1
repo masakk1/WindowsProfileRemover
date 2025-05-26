@@ -154,7 +154,8 @@ function Main(){
     }
 
     # Confirmar
-    $answer = Read-Host 'Deseas ELIMINAR PERMANENTEMENTE estos Perfiles de Active Directory? (s/N)'
+    Write-Host 'Deseas ELIMINAR PERMANENTEMENTE estos Perfiles de Active Directory? (s/N)'
+    $answer = Read-Host
 
     # Aceptar s/S/y/Y
     if ($answer -eq "s" -or $answer -eq "S" -or $answer -eq "y" -or $answer -eq "Y") {
