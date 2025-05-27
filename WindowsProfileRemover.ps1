@@ -84,6 +84,8 @@ function SurveyUsers() {
         # Special - Anonymous login - https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/manage/understand-security-identifiers
         If ( $User.SID -eq "S-1-5-7" ) {PrintUserExclusion -User $User -Reason $msgTable.reasonUserIsSpecial; Continue}
         
+
+
         $UsersToRemove += $User
     }
 
@@ -144,12 +146,29 @@ function RemoveAndReportUsers() {
 
 }
 
+function AddWhitelist() {
+    Write-Host "`n`n--------- $($msgTable.infoMsg7) ---------"
+    Write-Host $msgTable.infoMsg8
+    Write-Host $Whitelist
+
+    Write-Host $msgTable.questionMsg2
+    $WhitelistString = Read-Host
+    $WhitelistExtras = ($WhitelistString -split ",").Trim()
+
+    $script:Whitelist = & { $Whitelist; $WhitelistExtras }
+
+    # There might be empty items because of white spaces and empty commas.
+    # That won't change anything since no user is a single spa
+}
+
 
 #############
 # Main      #
 #############
 
 function Main(){
+    AddWhitelist{}
+
     $UsersToRemove = SurveyUsers{}
 
     DisplayUsersToRemove -UsersToRemove $UsersToRemove
@@ -160,7 +179,8 @@ function Main(){
     }
 
     # Confirm
-    $answer = Read-Host $msgTable.questionMsg1
+    Write-host $msgTable.questionMsg1
+    $answer = Read-Host
 
     # Accept all of s/S/y/Y
     if ($answer -eq "s" -or $answer -eq "S" -or $answer -eq "y" -or $answer -eq "Y") {
@@ -169,6 +189,11 @@ function Main(){
         Write-Host $msgTable.errExitMsg3
     }
 }
+
+Start-Sleep -Seconds 1 # Otherwise powershell gets stuck
+
+Write-Host "WindowsProfileRemover"
+Write-Host "GPL 3.0 - 2025 © masakk1"
 
 Main{}
 

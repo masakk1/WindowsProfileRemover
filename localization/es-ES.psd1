@@ -19,7 +19,12 @@
     infoMsg5 = "Usuarios a Eliminar"
     infoMsg6 = "Usuarios a quedar"
 
+    infoMsg7 = "Lista blanca"
+    infoMsg8 = "Usuarios que ya están en la lista blanca: "
+    questionMsg2 = "Introduce más usuarios que quieras en la lista blanca: "
+
     questionMsg1 = "Estás seguro de que quieres PERMANENTEMENTE ELIMINAR estos perfiles que originan del Directorio Activo? (s/N)"
+
 
     removingProfilesActivity = "Eliminando perfiles"
 }

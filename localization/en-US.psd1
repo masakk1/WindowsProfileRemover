@@ -18,8 +18,12 @@
     infoMsg4 = "Removing Users"
     infoMsg5 = "Users to Remove"
     infoMsg6 = "Staying Users"
+    infoMsg7 = "Whitelist"
+    infoMsg8 = "Users in Whitelist: "
+    questionMsg2 = "Insert more users for the Whitelist: "
 
     questionMsg1 = "Are you sure you want to PERMANENTLY DELETE these profiles originating from Active Directory? (y/N)"
+
 
     removingProfilesActivity = "Removing Profiles"
 }
